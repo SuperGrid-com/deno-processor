@@ -1,6 +1,7 @@
 import { updateComponentProp } from "./deps.js"
 
 export async function process(body) {
+	// return request
 	return {
 		page: {
 			...body.page,
@@ -23,5 +24,29 @@ export async function process(body) {
 		location: {
 			...body.location,
 		},
+		middleware: {
+			...body.middleware,
+		},
+		automations: {
+			...automationsParse(body.automations),
+		},
 	}
+}
+
+// automations parsing
+function automationsParse(automations) {
+	let parsedAutomations = {}
+
+	for (let i = 0; i < automations.length; i++) {
+		parsedAutomations[automations[i]] = {
+			trigger: () => {
+				console.log("Trigger automation!", automations[i])
+			},
+			delayAndTrigger: (delay) => {
+				console.log("Delay and trigger automation!", automations[i], delay)
+			},
+		}
+	}
+
+	return parsedAutomations
 }
