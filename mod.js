@@ -1,4 +1,4 @@
-import { set, find } from "./deps.js"
+import { updateComponentProp } from "./deps.js"
 
 export async function process(body) {
 	return {
