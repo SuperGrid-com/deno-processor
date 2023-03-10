@@ -30,6 +30,8 @@ export async function process(body) {
 		theme: {
 			...body.theme,
 			updateColor: (type, key, value) => {
+				console.log(body.theme.colors[type])
+				console.log(body.theme.colors[type][key].scale)
 				body.theme.colors[type][key].scale = [
 					value,
 					value,
