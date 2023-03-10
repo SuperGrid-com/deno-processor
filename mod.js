@@ -27,6 +27,23 @@ export async function process(body) {
 		middleware: {
 			...body.middleware,
 		},
+		theme: {
+			...body.theme,
+			updateColor: (type, key, value) => {
+				body.theme.colors[type][key].scale = [
+					value,
+					value,
+					value,
+					value,
+					value,
+					value,
+					value,
+					value,
+					value,
+					value,
+				]
+			},
+		},
 		automations: automationsParse(body?.automations ?? []),
 	}
 }
