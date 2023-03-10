@@ -2,5 +2,5 @@
 
 /** Returns `Hello World` in bold */
 export function getHelloWorld() {
-	return bold("Hello World - deno module!")
+	return "This is from a module! Deno land!!"
 }
