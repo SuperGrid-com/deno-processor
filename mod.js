@@ -27,15 +27,16 @@ export async function process(body) {
 		middleware: {
 			...body.middleware,
 		},
-		automations: {
-			...automationsParse(body.automations),
-		},
+		automations: automationsParse(body?.automations ?? []),
 	}
 }
 
 // automations parsing
 function automationsParse(automations) {
 	let parsedAutomations = {}
+
+	console.log("automations")
+	console.log(automations)
 
 	for (let i = 0; i < automations.length; i++) {
 		parsedAutomations[automations[i]] = {
