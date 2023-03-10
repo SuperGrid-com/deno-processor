@@ -5,8 +5,8 @@ export function getHelloWorld() {
 	return "This is from a module! Deno land!!"
 }
 
-export async function process(req) {
-	let body = await req.json()
+export async function process(body) {
+	// let body = await req.json()
 
 	return {
 		page: {
