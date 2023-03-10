@@ -1,16 +1,17 @@
-// import { bold } from "./deps.ts";
-
-/** Returns `Hello World` in bold */
-export function getHelloWorld() {
-	return "This is from a module! Deno land!!"
-}
+import { set, find } from "./deps.js"
 
 export async function process(body) {
 	return {
 		page: {
 			...body.page,
 			updateText: (id, value) => {
-				console.log(id, value)
+				updateComponentProp(body.page, id, "props.text", value)
+			},
+			updateStyles: (id, key, value) => {
+				updateComponentProp(body.page, id, "styles." + key, value)
+			},
+			hideElement: (id) => {
+				updateComponentProp(body.page, id, "props.display", "none")
 			},
 		},
 		user: {
