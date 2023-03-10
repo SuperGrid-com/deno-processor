@@ -6,8 +6,6 @@ export function getHelloWorld() {
 }
 
 export async function process(body) {
-	// let body = await req.json()
-
 	return {
 		page: {
 			...body.page,
