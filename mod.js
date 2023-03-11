@@ -1,6 +1,6 @@
 import { updateComponentProp, serve } from "./deps.js"
 
-export async function runMiddleware(req, fn) {
+export async function run(fn) {
 	serve((req) => {
 		// Run the middleware
 		fn()
