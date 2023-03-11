@@ -1,16 +1,15 @@
 import { updateComponentProp, serve } from "./deps.js"
 
-export async function runMiddleware(fn) {
-	serve((req) => {
-
-    const request = await req.json();
-    const rq = await process(request)
+export async function runMiddleware(middlewareFn) {
+	serve(async (_req) => {
+		const request = await _req.json()
+		const rq = await process(request)
 
 		// Run the middleware
-		fn(rq)
+		middlewareFn(rq)
 
 		// Return a response
-    return  Response.json(rq)
+		return Response.json(rq)
 		// return new Response("This is a run middleware wrapper?")
 	})
 }
