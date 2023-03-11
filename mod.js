@@ -1,4 +1,14 @@
-import { updateComponentProp } from "./deps.js"
+import { updateComponentProp, serve } from "./deps.js"
+
+export async function runMiddleware(req, fn) {
+	serve((req) => {
+		// Run the middleware
+		fn()
+
+		// Return a response
+		return new Response("This is a run middleware wrapper?")
+	})
+}
 
 export async function process(body) {
 	// return request
@@ -30,8 +40,6 @@ export async function process(body) {
 		theme: {
 			...body.theme,
 			updateColor: (type, key, value) => {
-				console.log(body.theme.colors[type])
-				console.log(body.theme.colors[type][key].scale)
 				body.theme.colors[type][key].scale = [
 					value,
 					value,
